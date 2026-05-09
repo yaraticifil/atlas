@@ -6,11 +6,11 @@ import ToolCard from '@/components/ToolCard';
 import SearchBox from '@/components/SearchBox';
 
 const FILTERS = [
-  { id: 'free',   label: 'Ücretsiz',      fn: (t: typeof tools[0]) => t.hasFreeTier && t.startingPriceUsd === 0 },
-  { id: 'oss',    label: 'Açık Kaynak',   fn: (t: typeof tools[0]) => t.openSource },
-  { id: 'local',  label: 'Yerel Çalışır', fn: (t: typeof tools[0]) => t.localRun },
-  { id: 'api',    label: 'API var',        fn: (t: typeof tools[0]) => t.apiAvailable },
-  { id: 'privacy',label: 'Yüksek Gizlilik', fn: (t: typeof tools[0]) => t.privacyScore === 'high' },
+  { id: 'free',   label: 'Ücretsiz',                        fn: (t: typeof tools[0]) => t.hasFreeTier && t.startingPriceUsd === 0 },
+  { id: 'oss',    label: 'Açık Kaynak (OSS)',               fn: (t: typeof tools[0]) => t.openSource },
+  { id: 'local',  label: 'İnternetsiz Çalışır',             fn: (t: typeof tools[0]) => t.localRun },
+  { id: 'api',    label: 'API Var (Yazılıma Bağlanır)',     fn: (t: typeof tools[0]) => t.apiAvailable },
+  { id: 'privacy',label: 'Yüksek Gizlilik',                fn: (t: typeof tools[0]) => t.privacyScore === 'high' },
 ];
 
 export default function SearchResultsClient() {

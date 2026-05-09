@@ -14,11 +14,11 @@ const FEATURED_TOOLS = ['open-webui', 'continue-dev', 'n8n', 'flux', 'jan'].map(
 ).filter(Boolean);
 
 const CHIPS = [
-  { label: 'Escape ChatGPT', query: 'chatgpt alternatifi' },
-  { label: 'Ücretsiz Midjourney', query: 'midjourney ücretsiz' },
-  { label: 'Local AI Stack', query: 'local çalışan ai' },
-  { label: 'Ücretsiz Cursor', query: 'cursor alternatifi' },
-  { label: 'Enterprise Privacy', query: 'gdpr gizlilik ai' },
+  { label: 'ChatGPT\'den kaç 🏴', query: 'chatgpt alternatifi' },
+  { label: 'Ücretsiz Midjourney alternatifi', query: 'midjourney ücretsiz' },
+  { label: 'İnternetsiz çalışan AI', query: 'local çalışan ai' },
+  { label: 'Ücretsiz Cursor alternatifi', query: 'cursor alternatifi' },
+  { label: 'Gizlilik odaklı araçlar', query: 'gdpr gizlilik ai' },
 ];
 
 const CATEGORIES = [
@@ -37,7 +37,7 @@ export default function HomePage() {
       <section style={{ padding: '72px 24px 52px', maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--accent)', background: 'var(--accent-bg)', padding: '5px 12px', borderRadius: 20, marginBottom: 28, border: '0.5px solid var(--accent-border)' }}>
           <svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="4"/></svg>
-          AI complexity compression
+          Yapay zeka karmaşıklığını sıfırlıyoruz
         </div>
 
         <h1 style={{ fontSize: 'clamp(38px, 6vw, 54px)', fontFamily: "'DM Serif Display', serif", letterSpacing: '-0.025em', lineHeight: 1.08, color: 'var(--text)', marginBottom: 16 }}>
@@ -46,8 +46,8 @@ export default function HomePage() {
         </h1>
 
         <p style={{ fontSize: 16, color: 'var(--muted)', lineHeight: 1.65, fontWeight: 300, maxWidth: 420, margin: '0 auto 40px' }}>
-          400 tool araştırmak yok. Reddit kazmak yok.<br />
-          Bütçene, gizliliğine, workflow'una göre en iyi AI stack'i saniyede bul.
+          400 araç araştırmak yok. Reddit kazmak yok.<br />
+          Bütçene, gizliliğine, iş akışına göre en iyi yapay zeka araç setini saniyede bul.
         </p>
 
         <SearchBox autoFocus />
@@ -67,10 +67,10 @@ export default function HomePage() {
       <div style={{ borderTop: '0.5px solid var(--border)', borderBottom: '0.5px solid var(--border)', background: 'var(--bg2)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '14px 24px', display: 'flex', justifyContent: 'center', gap: 40, flexWrap: 'wrap' }}>
           {[
-            { n: `${tools.length}+`, label: 'tool veritabanı' },
-            { n: '7', label: 'analiz motoru' },
-            { n: '0', label: 'affiliate link' },
-            { n: 'Gerçek', label: 'veri, gerçek skor' },
+            { n: `${tools.length}+`, label: 'araç veritabanında' },
+            { n: '7', label: 'farklı analiz kriteri' },
+            { n: '0', label: 'reklam / yönlendirme linki' },
+            { n: 'Gerçek', label: 'veri, gerçek puan' },
           ].map(s => (
             <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--muted)' }}>
               <span style={{ fontWeight: 600, color: 'var(--text)' }}>{s.n}</span>

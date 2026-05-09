@@ -35,7 +35,7 @@ export default function Nav() {
                 transition: 'all 0.15s',
               }}
             >
-              🏴 Escape
+              🏴 Kaçış <span style={{ fontSize: 11, color: 'var(--subtle)', fontWeight: 400 }}>(ücretliden kurtul)</span>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ transform: escapeOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.15s' }}>
                 <path d="M3 4.5l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -77,12 +77,12 @@ export default function Nav() {
           <Link href="/matrix" style={{ padding: '6px 12px', borderRadius: 8, fontSize: 13, color: 'var(--muted)', textDecoration: 'none', fontWeight: 500, transition: 'color 0.15s' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>
-            Matrix
+            Karşılaştır <span style={{ fontSize: 11, fontWeight: 400 }}>(Matrix)</span>
           </Link>
           <Link href="/stacks" style={{ padding: '6px 12px', borderRadius: 8, fontSize: 13, color: 'var(--muted)', textDecoration: 'none', fontWeight: 500, transition: 'color 0.15s' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>
-            Stack Presets
+            Hazır Setler <span style={{ fontSize: 11, fontWeight: 400 }}>(Stack)</span>
           </Link>
 
           <Link href="/tool/open-webui" className="btn btn-dark" style={{ marginLeft: 8, fontSize: 12, padding: '7px 14px' }}>

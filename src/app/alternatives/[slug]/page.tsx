@@ -38,7 +38,7 @@ export default async function AlternativesPage({ params }: { params: Promise<{ s
             {source.name} Alternatifleri
           </h1>
           <p style={{ fontSize: 14, color: 'var(--muted)', marginTop: 4 }}>
-            {alts.length} alternatif bulundu — MatchScore ile sıralı
+            {alts.length} alternatif bulundu — MatchScore sıralamasıyla
           </p>
         </div>
       </div>

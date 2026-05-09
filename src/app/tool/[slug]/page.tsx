@@ -46,10 +46,10 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
   const badges: { label: string; cls: string }[] = [];
   if (tool.hasFreeTier && tool.startingPriceUsd === 0) badges.push({ label: 'Ücretsiz', cls: 'badge-free' });
-  if (tool.openSource) badges.push({ label: 'Açık Kaynak', cls: 'badge-oss' });
-  if (tool.localRun) badges.push({ label: 'Local', cls: 'badge-local' });
-  if (tool.apiAvailable) badges.push({ label: 'API', cls: 'badge-api' });
-  if (tool.dockerSupport) badges.push({ label: 'Docker', cls: 'badge-docker' });
+  if (tool.openSource) badges.push({ label: 'Açık Kaynak (OSS)', cls: 'badge-oss' });
+  if (tool.localRun) badges.push({ label: 'İnternetsiz Çalışır', cls: 'badge-local' });
+  if (tool.apiAvailable) badges.push({ label: 'API (Yazılıma Bağlanır)', cls: 'badge-api' });
+  if (tool.dockerSupport) badges.push({ label: 'Docker (Konteyner)', cls: 'badge-docker' });
 
   return (
     <div style={{ maxWidth: 800, margin: '0 auto', padding: '40px 24px' }}>
@@ -93,9 +93,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: 8, marginBottom: 32 }}>
         {[
           { label: 'Başlangıç Fiyatı', value: tool.startingPriceUsd === 0 ? 'Ücretsiz' : `$${tool.startingPriceUsd}/ay` },
-          { label: 'Trust Skoru', value: `${tool.trustScore}/100` },
-          { label: 'OSS Health', value: tool.openSource ? `${tool.ossHealthScore}/100` : 'N/A' },
-          { label: 'Wrapper Depth', value: `${tool.wrapperDepthScore}/100` },
+          { label: 'Güven Puanı (Trust Score)', value: `${tool.trustScore}/100` },
+          { label: 'Açık Kaynak Sağlığı (OSS Health)', value: tool.openSource ? `${tool.ossHealthScore}/100` : 'Geçerli değil' },
+          { label: 'Bağımsızlık Puanı (Wrapper Depth)', value: `${tool.wrapperDepthScore}/100` },
         ].map(m => (
           <div key={m.label} style={{ background: 'var(--bg2)', border: '0.5px solid var(--border)', borderRadius: 10, padding: '12px 14px', textAlign: 'center' }}>
             <div style={{ fontSize: 20, fontWeight: 600, color: 'var(--text)' }}>{m.value}</div>
@@ -109,30 +109,35 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         {/* Technical */}
         <div className="card" style={{ padding: '16px 18px' }}>
           <p className="section-label" style={{ marginBottom: 12 }}>Teknik Özellikler</p>
-          <StatLine label="Self-host" value={tool.selfHostable ? '✅ Evet' : '❌ Hayır'} highlight={tool.selfHostable} />
-          <StatLine label="Yerel çalışır" value={tool.localRun ? '✅ Evet' : '❌ Hayır'} highlight={tool.localRun} />
-          <StatLine label="Docker" value={tool.dockerSupport ? '✅ Evet' : '❌ Hayır'} highlight={tool.dockerSupport} />
-          <StatLine label="Ollama desteği" value={tool.ollamaSupport ? '✅ Evet' : '❌ Hayır'} highlight={tool.ollamaSupport} />
-          <StatLine label="API erişimi" value={tool.apiAvailable ? '✅ Evet' : '❌ Hayır'} highlight={tool.apiAvailable} />
+          <StatLine label="Kendi sunucunda çalıştır (Self-host)" value={tool.selfHostable ? '✅ Evet, kendi sunucunda kurulabilir' : '❌ Hayır, sadece bulutta çalışır'} highlight={tool.selfHostable} />
+          <StatLine label="İnternetsiz çalışır (Local Run)" value={tool.localRun ? '✅ Evet, internete gerek yok' : '❌ Hayır, internet gerekli'} highlight={tool.localRun} />
+          <StatLine label="Docker (Konteyner kurulumu)" value={tool.dockerSupport ? '✅ Destekleniyor' : '❌ Desteklenmiyor'} highlight={tool.dockerSupport} />
+          <StatLine label="Ollama (Yerel AI motoru)" value={tool.ollamaSupport ? '✅ Destekleniyor' : '❌ Desteklenmiyor'} highlight={tool.ollamaSupport} />
+          <StatLine label="API erişimi (Yazılıma bağlanır)" value={tool.apiAvailable ? '✅ Var' : '❌ Yok'} highlight={tool.apiAvailable} />
           {tool.openSource && tool.licenseType && (
-            <StatLine label="Lisans" value={tool.licenseType} />
+            <StatLine label="Lisans türü" value={tool.licenseType} />
           )}
           {tool.githubStars && (
-            <StatLine label="GitHub Yıldız" value={`★ ${(tool.githubStars / 1000).toFixed(0)}k`} />
+            <StatLine label="GitHub yıldızı (popülerlik)" value={`★ ${(tool.githubStars / 1000).toFixed(0)}k kişi beğendi`} />
           )}
           <div style={{ borderBottom: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 9 }}>
-            <span style={{ fontSize: 13, color: 'var(--muted)' }}>Commit sıklığı</span>
-            <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--text)', textTransform: 'capitalize' }}>{tool.commitFrequency}</span>
+            <span style={{ fontSize: 13, color: 'var(--muted)' }}>Güncelleme sıklığı</span>
+            <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--text)' }}>{
+              tool.commitFrequency === 'daily' ? '🟢 Her gün' :
+              tool.commitFrequency === 'weekly' ? '🟡 Haftada bir' :
+              tool.commitFrequency === 'monthly' ? '🟠 Ayda bir' :
+              '🔴 Durdu'
+            }</span>
           </div>
         </div>
 
         {/* Privacy */}
         <div className="card" style={{ padding: '16px 18px' }}>
           <p className="section-label" style={{ marginBottom: 12 }}>Gizlilik & Güven</p>
-          <StatLine label="GDPR Uyumlu" value={tool.gdprCompliant ? '✅ Evet' : '❌ Hayır'} highlight={tool.gdprCompliant} />
-          <StatLine label="Veri saklanıyor" value={tool.dataStored ? '⚠ Evet' : '✅ Hayır'} highlight={!tool.dataStored} />
-          <StatLine label="Modeli eğitiyor" value={tool.trainsOnData ? '⚠ Evet' : '✅ Hayır'} highlight={!tool.trainsOnData} />
-          <StatLine label="Affiliate riski" value={tool.affiliateRisk ? '⚠ Var' : '✅ Yok'} highlight={!tool.affiliateRisk} />
+          <StatLine label="GDPR Uyumlu (AB veri yasası)" value={tool.gdprCompliant ? '✅ Evet, uyumlu' : '❌ Hayır, uyumlu değil'} highlight={tool.gdprCompliant} />
+          <StatLine label="Veri saklanıyor mu?" value={tool.dataStored ? '⚠ Evet, verileriniz saklanır' : '✅ Hayır, verileriniz saklanmaz'} highlight={!tool.dataStored} />
+          <StatLine label="Verilerinizle AI eğitiliyor mu?" value={tool.trainsOnData ? '⚠ Evet, verileriniz kullanılır' : '✅ Hayır, kullanılmaz'} highlight={!tool.trainsOnData} />
+          <StatLine label="Bağlı link riski (Affiliate)" value={tool.affiliateRisk ? '⚠ Var, taımsız öneriler olabilir' : '✅ Yok, bağımsız değerlendirme'} highlight={!tool.affiliateRisk} />
           <div style={{ paddingTop: 12 }}>
             <PrivacyBadge score={tool.privacyScore} />
           </div>
@@ -146,7 +151,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             <div>
               <p className="section-label">{tool.name} alternatifleri</p>
               <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 20, color: 'var(--text)', marginTop: 4 }}>
-                MatchScore ile sıralı öneriler
+                MatchScore\'a göre sıralı öneriler
               </h2>
             </div>
             <Link href={`/alternatives/${slug}`} style={{ fontSize: 13, color: 'var(--accent)', textDecoration: 'none', fontWeight: 500 }}>

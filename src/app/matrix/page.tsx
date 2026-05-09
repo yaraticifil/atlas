@@ -31,12 +31,12 @@ export default function MatrixPage() {
   return (
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 24px' }}>
       <div style={{ marginBottom: 32 }}>
-        <p className="section-label" style={{ marginBottom: 8 }}>Alternative Matrix</p>
+        <p className="section-label" style={{ marginBottom: 8 }}>Karşılaştırma Tablosu</p>
         <h1 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 32, color: 'var(--text)', marginBottom: 10 }}>
-          Tüm AI araçları, şeffaf verilerle
+          Tüm yapay zeka araçları, şeffaf verilerle
         </h1>
         <p style={{ fontSize: 15, color: 'var(--muted)', maxWidth: 520 }}>
-          {tools.length} araç · {freeCount} ücretsiz · {ossCount} açık kaynak · {localCount} yerel çalışır
+          {tools.length} araç · {freeCount} ücretsiz · {ossCount} açık kaynak · {localCount} internetsiz çalışır
         </p>
       </div>
 
@@ -57,7 +57,16 @@ export default function MatrixPage() {
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
                 <thead>
                   <tr style={{ background: 'var(--bg2)' }}>
-                    {['Araç', 'Ücretsiz', 'OSS', 'Local', 'API', 'Gizlilik', 'Trust', 'Score'].map(h => (
+                    {[
+                      'Araç',
+                      'Ücretsiz',
+                      'Açık Kaynak (OSS)',
+                      'İnternetsiz Çalışır',
+                      'API (Yazılıma Bağlanır)',
+                      'Gizlilik',
+                      'Güven Puanı',
+                      'Eşleşme Puanı',
+                    ].map(h => (
                       <th key={h} style={{ padding: '10px 12px', textAlign: 'left', fontSize: 11, fontWeight: 500, color: 'var(--subtle)', letterSpacing: '0.05em', textTransform: 'uppercase' as const, whiteSpace: 'nowrap' as const, borderBottom: '0.5px solid var(--border)' }}>
                         {h}
                       </th>

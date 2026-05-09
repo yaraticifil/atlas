@@ -4,18 +4,18 @@ import type { Tool } from '@/lib/tools';
 function getBadges(tool: Tool) {
   const badges: { label: string; cls: string }[] = [];
   if (tool.hasFreeTier && tool.startingPriceUsd === 0) badges.push({ label: 'Ücretsiz', cls: 'badge-free' });
-  if (tool.openSource) badges.push({ label: 'OSS', cls: 'badge-oss' });
-  if (tool.localRun) badges.push({ label: 'Local', cls: 'badge-local' });
-  if (tool.apiAvailable) badges.push({ label: 'API', cls: 'badge-api' });
+08  if (tool.openSource) badges.push({ label: 'Açık Kaynak (OSS)', cls: 'badge-oss' });
+  if (tool.localRun) badges.push({ label: 'İnternetsiz Çalışır', cls: 'badge-local' });
+  if (tool.apiAvailable) badges.push({ label: 'API (Yazılıma Bağlanır)', cls: 'badge-api' });
   if (!tool.hasFreeTier && tool.startingPriceUsd > 0) badges.push({ label: `$${tool.startingPriceUsd}/ay`, cls: 'badge-paid' });
   return badges;
 }
 
 function PrivacyDot({ score }: { score: string }) {
   const map: Record<string, { color: string; label: string }> = {
-    high:   { color: '#16a34a', label: 'Gizlilik: Yüksek' },
+    high: { color: '#16a34a', label: 'Gizlilik: Yüksek' },
     medium: { color: '#d97706', label: 'Gizlilik: Orta' },
-    low:    { color: '#dc2626', label: 'Gizlilik: Düşük' },
+    low: { color: '#dc2626', label: 'Gizlilik: Düşük' },
   };
   const { color, label } = map[score] ?? map.medium;
   return (
@@ -82,11 +82,16 @@ export default function ToolCard({ tool, rank }: { tool: Tool; rank?: number }) 
           {tool.openSource && (
             <div style={{ marginTop: 8, display: 'flex', gap: 12, fontSize: 11, color: 'var(--subtle)' }}>
               {tool.githubStars && (
-                <span>★ {(tool.githubStars / 1000).toFixed(0)}k</span>
+                <span>★ {(tool.githubStars / 1000).toFixed(0)}k GitHub yıldızı</span>
               )}
-              <span style={{ textTransform: 'capitalize' }}>{tool.commitFrequency} commit</span>
+              <span>{
+                tool.commitFrequency === 'daily' ? '🟢 Her gün güncelleniyor' :
+                  tool.commitFrequency === 'weekly' ? '🟡 Haftada güncelleniyor' :
+                    tool.commitFrequency === 'monthly' ? '🟠 Ayda güncelleniyor' :
+                      '🔴 Güncelleme durdu'
+              }</span>
               {tool.ossHealthScore > 0 && (
-                <span>OSS Sağlık: {tool.ossHealthScore}/100</span>
+                <span>Sağlık puanı: {tool.ossHealthScore}/100</span>
               )}
             </div>
           )}

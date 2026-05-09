@@ -11,12 +11,12 @@ export default function StacksPage() {
   return (
     <div style={{ maxWidth: 900, margin: '0 auto', padding: '40px 24px' }}>
       <div style={{ marginBottom: 36 }}>
-        <p className="section-label" style={{ marginBottom: 8 }}>Stack Presets</p>
+        <p className="section-label" style={{ marginBottom: 8 }}>Hazır Araç Setleri</p>
         <h1 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 32, color: 'var(--text)', marginBottom: 10 }}>
-          Kullanıma hazır AI stack'ler
+          Kullanıma hazır yapay zeka setleri
         </h1>
         <p style={{ fontSize: 15, color: 'var(--muted)', maxWidth: 500 }}>
-          Durumuna göre bir stack seç. Hangi araçları kullanacağını, kurulum sırasını ve toplam maliyeti göster.
+          Durumuna göre bir set seç. Hangi araçları kullanacağını, kurulum sırasını ve toplam maliyeti gör.
         </p>
       </div>
 
