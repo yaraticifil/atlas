@@ -4,7 +4,7 @@ import type { Tool } from '@/lib/tools';
 function getBadges(tool: Tool) {
   const badges: { label: string; cls: string }[] = [];
   if (tool.hasFreeTier && tool.startingPriceUsd === 0) badges.push({ label: 'Ücretsiz', cls: 'badge-free' });
-08  if (tool.openSource) badges.push({ label: 'Açık Kaynak (OSS)', cls: 'badge-oss' });
+  if (tool.openSource) badges.push({ label: 'Açık Kaynak (OSS)', cls: 'badge-oss' });
   if (tool.localRun) badges.push({ label: 'İnternetsiz Çalışır', cls: 'badge-local' });
   if (tool.apiAvailable) badges.push({ label: 'API (Yazılıma Bağlanır)', cls: 'badge-api' });
   if (!tool.hasFreeTier && tool.startingPriceUsd > 0) badges.push({ label: `$${tool.startingPriceUsd}/ay`, cls: 'badge-paid' });
