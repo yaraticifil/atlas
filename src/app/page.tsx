@@ -5,8 +5,8 @@ import { tools, stackPresets, escapeModes } from '@/lib/tools';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'HiveAtlas — AI Araç Keşif Platformu',
-  description: 'Bütçene, gizliliğine, workflow\'una göre en iyi AI stack\'i saniyede bul. 0 affiliate link.',
+  title: 'Creative Elephant 🐘 — AI Dünyasının Kılavuzu',
+  description: 'Fil hortumu gibi her köşeyi koklayan AI keşif platformu. 43+ araç, 0 affiliate link.',
 };
 
 const FEATURED_TOOLS = ['open-webui', 'continue-dev', 'n8n', 'flux', 'jan'].map(
@@ -19,15 +19,23 @@ const CHIPS = [
   { label: 'İnternetsiz çalışan AI', query: 'local çalışan ai' },
   { label: 'Ücretsiz Cursor alternatifi', query: 'cursor alternatifi' },
   { label: 'Gizlilik odaklı araçlar', query: 'gdpr gizlilik ai' },
+  { label: 'AI video araçları', query: 'video' },
+  { label: 'Ücretsiz sunum aracı', query: 'sunum ücretsiz' },
+  { label: 'AI müzik üretici', query: 'müzik' },
 ];
 
 const CATEGORIES = [
   { slug: 'chatbot',      label: 'Chatbot',      icon: '💬', count: tools.filter(t => t.categories.includes('chatbot')).length },
   { slug: 'coding',       label: 'Kodlama',       icon: '⌨️', count: tools.filter(t => t.categories.includes('coding')).length },
   { slug: 'image',        label: 'Görsel',        icon: '🎨', count: tools.filter(t => t.categories.includes('image')).length },
+  { slug: 'video',        label: 'Video',         icon: '🎬', count: tools.filter(t => t.categories.includes('video')).length },
+  { slug: 'audio',        label: 'Ses / Müzik',   icon: '🎵', count: tools.filter(t => t.categories.includes('audio') || t.categories.includes('music')).length },
   { slug: 'automation',   label: 'Otomasyon',     icon: '⚡', count: tools.filter(t => t.categories.includes('automation')).length },
-  { slug: 'audio',        label: 'Ses',           icon: '🎙️', count: tools.filter(t => t.categories.includes('audio')).length },
   { slug: 'writing',      label: 'Yazı',          icon: '📝', count: tools.filter(t => t.categories.includes('writing')).length },
+  { slug: 'research',     label: 'Araştırma',     icon: '🔍', count: tools.filter(t => t.categories.includes('research')).length },
+  { slug: 'presentation', label: 'Sunum',         icon: '📊', count: tools.filter(t => t.categories.includes('presentation')).length },
+  { slug: 'education',    label: 'Eğitim',        icon: '🎓', count: tools.filter(t => t.categories.includes('education')).length },
+  { slug: 'data',         label: 'Veri',          icon: '📈', count: tools.filter(t => t.categories.includes('data')).length },
 ];
 
 export default function HomePage() {
@@ -36,18 +44,18 @@ export default function HomePage() {
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section style={{ padding: '72px 24px 52px', maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--accent)', background: 'var(--accent-bg)', padding: '5px 12px', borderRadius: 20, marginBottom: 28, border: '0.5px solid var(--accent-border)' }}>
-          <svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="4"/></svg>
-          Yapay zeka karmaşıklığını sıfırlıyoruz
+          <span style={{ fontSize: 14 }}>🐘</span>
+          Her yerde, her zaman — duyan, bilen, haber veren
         </div>
 
         <h1 style={{ fontSize: 'clamp(38px, 6vw, 54px)', fontFamily: "'DM Serif Display', serif", letterSpacing: '-0.025em', lineHeight: 1.08, color: 'var(--text)', marginBottom: 16 }}>
-          Sen söyle,<br />
-          <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>biz karar verelim</em>
+          Fil gibi araştır,<br />
+          <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>akıllıca seç</em>
         </h1>
 
-        <p style={{ fontSize: 16, color: 'var(--muted)', lineHeight: 1.65, fontWeight: 300, maxWidth: 420, margin: '0 auto 40px' }}>
+        <p style={{ fontSize: 16, color: 'var(--muted)', lineHeight: 1.65, fontWeight: 300, maxWidth: 440, margin: '0 auto 40px' }}>
           400 araç araştırmak yok. Reddit kazmak yok.<br />
-          Bütçene, gizliliğine, iş akışına göre en iyi yapay zeka araç setini saniyede bul.
+          Creative Elephant'ın hortumu her köşeyi koklayıp sana en doğru AI aracını saniyede buluyor.
         </p>
 
         <SearchBox autoFocus />
@@ -68,11 +76,13 @@ export default function HomePage() {
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '14px 24px', display: 'flex', justifyContent: 'center', gap: 40, flexWrap: 'wrap' }}>
           {[
             { n: `${tools.length}+`, label: 'araç veritabanında' },
-            { n: '7', label: 'farklı analiz kriteri' },
-            { n: '0', label: 'reklam / yönlendirme linki' },
+            { n: '11', label: 'farklı kategori' },
+            { n: '15+', label: 'analiz metriği' },
+            { n: '0', label: 'reklam / affiliate link' },
             { n: 'Gerçek', label: 'veri, gerçek puan' },
+            { n: '🆓', label: 'tamamen ücretsiz platform' },
           ].map(s => (
-            <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--muted)' }}>
+          <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--muted)' }}>
               <span style={{ fontWeight: 600, color: 'var(--text)' }}>{s.n}</span>
               {s.label}
             </div>
@@ -194,21 +204,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── CTA STRIP ────────────────────────────────────── */}
+      {/* ─── WIZARD + COMPARE CTA ─────────────────────────────── */}
       <section style={{ maxWidth: 1100, margin: '56px auto 0', padding: '0 24px' }}>
-        <div style={{ background: 'var(--bg2)', border: '0.5px solid var(--border)', borderRadius: 20, padding: '40px 32px', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 28, color: 'var(--text)', marginBottom: 10 }}>
-            AI dünyasında kaybolmak zorunda değilsin
-          </h2>
-          <p style={{ fontSize: 15, color: 'var(--muted)', maxWidth: 420, margin: '0 auto 24px', lineHeight: 1.6 }}>
-            Doğal dilde yaz. Ne istediğini söyle. Gerisini biz halledelim.
-          </p>
-          <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/matrix" className="btn btn-dark">Alternative Matrix'i Gör</Link>
-            <Link href="/escape/openai" className="btn btn-ghost">Escape OpenAI</Link>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 12 }}>
+          {/* Sihirbaz */}
+          <div style={{ background: 'linear-gradient(135deg, #FDF6E8 0%, #FFF8F0 100%)', border: '1px solid var(--accent-border)', borderRadius: 20, padding: '32px 28px' }}>
+            <div style={{ fontSize: 36, marginBottom: 12 }}>🧙</div>
+            <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 22, color: 'var(--text)', marginBottom: 8 }}>
+              Hangi araç senin için?
+            </h2>
+            <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.6, marginBottom: 20 }}>
+              4 soruyu yanıtla — kişiye özel 5 araç önerelim. Bütçen, gizliliğin, teknik seviyene göre.
+            </p>
+            <Link href="/wizard" className="btn btn-accent">
+              Sihirbazı Başlat →
+            </Link>
+          </div>
+          {/* Karşılaştır */}
+          <div style={{ background: 'linear-gradient(135deg, #EEF2FF 0%, #F5F3FF 100%)', border: '1px solid #C7D2FE', borderRadius: 20, padding: '32px 28px' }}>
+            <div style={{ fontSize: 36, marginBottom: 12 }}>⚖️</div>
+            <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 22, color: 'var(--text)', marginBottom: 8 }}>
+              Yan yana karşılaştır
+            </h2>
+            <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.6, marginBottom: 20 }}>
+              ChatGPT vs Claude vs Gemini? 3 aracı seç, 15+ metrik ile kıyasla. Kararı sen ver.
+            </p>
+            <Link href="/compare" className="btn btn-dark">
+              Karşılaştırmayı Aç →
+            </Link>
           </div>
         </div>
       </section>
+
     </div>
   );
 }

@@ -4,12 +4,12 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "HiveAtlas — AI Araç Keşif Platformu",
-  description: "Doğal dilde yazın, size uygun en iyi AI aracını saniyede bulun. 0 affiliate link, gerçek veriler.",
-  keywords: "AI araçlar, ChatGPT alternatifi, ücretsiz AI, açık kaynak AI, AI karşılaştırma",
+  title: "Creative Elephant 🐘 — AI Dünyasının Kılavuzu",
+  description: "Fil hortumu gibi her köşeyi koklayan AI keşif platformu. Bütçene, gizliliğine ve iş akışına göre en iyi AI aracını saniyede bul. 0 affiliate link, gerçek veriler.",
+  keywords: "AI araçlar, ChatGPT alternatifi, ücretsiz AI, açık kaynak AI, AI karşılaştırma, creative elephant",
   openGraph: {
-    title: "HiveAtlas — AI Araç Keşif Platformu",
-    description: "Bütçene, gizliliğine, workflow'una göre en iyi AI stack'i saniyede bul.",
+    title: "Creative Elephant 🐘 — AI Dünyasının Kılavuzu",
+    description: "Fil hortumu gibi her yeri araştırıyor, sana en iyi AI aracını buluyor. 43+ araç, 0 reklam.",
     type: "website",
   },
 };

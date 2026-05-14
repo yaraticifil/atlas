@@ -11,12 +11,10 @@ export default function Nav() {
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 56 }}>
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
-          <div style={{ width: 28, height: 28, background: 'var(--text)', borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M8 2L10.5 6H13L11 9L12 13L8 11L4 13L5 9L3 6H5.5L8 2Z" fill="white" opacity=".9"/>
-            </svg>
+          <div style={{ width: 32, height: 32, background: 'var(--text)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>
+            🐘
           </div>
-          <span style={{ fontFamily: "'DM Serif Display', serif", fontSize: 16, color: 'var(--text)', letterSpacing: '-0.01em' }}>HiveAtlas</span>
+          <span style={{ fontFamily: "'DM Serif Display', serif", fontSize: 16, color: 'var(--text)', letterSpacing: '-0.01em' }}>Creative Elephant</span>
         </Link>
 
         {/* Nav links */}
@@ -74,19 +72,24 @@ export default function Nav() {
             )}
           </div>
 
-          <Link href="/matrix" style={{ padding: '6px 12px', borderRadius: 8, fontSize: 13, color: 'var(--muted)', textDecoration: 'none', fontWeight: 500, transition: 'color 0.15s' }}
+          <Link href="/compare" style={{ padding: '6px 12px', borderRadius: 8, fontSize: 13, color: 'var(--muted)', textDecoration: 'none', fontWeight: 500, transition: 'color 0.15s' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>
-            Karşılaştır <span style={{ fontSize: 11, fontWeight: 400 }}>(Matrix)</span>
+            ⚖️ Karşılaştır
           </Link>
           <Link href="/stacks" style={{ padding: '6px 12px', borderRadius: 8, fontSize: 13, color: 'var(--muted)', textDecoration: 'none', fontWeight: 500, transition: 'color 0.15s' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>
-            Hazır Setler <span style={{ fontSize: 11, fontWeight: 400 }}>(Stack)</span>
+            Hazır Setler
+          </Link>
+          <Link href="/matrix" style={{ padding: '6px 12px', borderRadius: 8, fontSize: 13, color: 'var(--muted)', textDecoration: 'none', fontWeight: 500, transition: 'color 0.15s' }}
+            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}>
+            Matrix
           </Link>
 
-          <Link href="/tool/open-webui" className="btn btn-dark" style={{ marginLeft: 8, fontSize: 12, padding: '7px 14px' }}>
-            Keşfet →
+          <Link href="/wizard" className="btn btn-accent" style={{ marginLeft: 8, fontSize: 12, padding: '7px 14px' }}>
+            🧙 Sihirbaz
           </Link>
         </div>
       </div>
